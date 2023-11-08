@@ -1,12 +1,12 @@
 <?php
   define('VITE_DEV_HOST', 'http://localhost:5174');
-  define('ASSET_DIR_SRC', '');
   define('ASSET_PATH_DIST', __DIR__ . '/asset-dist');
+  define('ASSET_URI_DIST', '/asset-dist');
 
   function assetUrl(string $entry): string {
       $manifest = getManifest();
 
-      return isset($manifest[$entry]) ? '/' . $manifest[$entry]['file'] : '';
+      return isset($manifest[$entry]) ? ASSET_URI_DIST . '/' . $manifest[$entry]['file'] : '';
   }
 
   function cssTag(string $entry): string {
@@ -30,7 +30,7 @@
 
       if (!empty($manifest[$entry]['css'])) {
         foreach ($manifest[$entry]['css'] as $file) {
-          $urls[] = 'asset-dist/' . $file;
+          $urls[] = ASSET_URI_DIST . '/' . $file;
         }
       }
 
@@ -96,7 +96,7 @@
 
   // Helpers to print tags
   function jsTag(string $entry): string {
-    $url = isDev($entry) ? VITE_DEV_HOST . '/' . $entry : assetUrl(ASSET_DIR_SRC . '/' . $entry);
+    $url = isDev($entry) ? VITE_DEV_HOST . '/' . $entry : assetUrl($entry);
 
     if (!$url) {
       return '';
