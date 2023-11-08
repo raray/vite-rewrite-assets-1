@@ -1,0 +1,17 @@
+{
+  "name": "vite-rewrite-assets-1",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "sass": "^1.69.5",
+    "vite": "^4.5.0"
+  },
+  "browserslist": [
+    "last 1 version"
+  ],
+  "packageManager": "yarn@3.2.3"
+}
